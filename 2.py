@@ -1,26 +1,27 @@
 from random import randint
 import time
-from flask import Flask
+from flask import Flask,render_template
 app = Flask(__name__)
 
+@app.route('/main')
+def homepage():
+    x = randint(0,99)
+    y = randint(0,99)
+    return render_template('calculate.html.jinja',x=x,y=y)
 
 def getOutput():
     start_time = time.time()
     x = randint(0,100)
     y  = randint(0,100)
-    print("{} + {} = ?".format(x,y))
-    if int(input())==x+y:
-        print("Correct")
-        print("--- %s seconds" % int(time.time() - start_time))
-    else:
-        print("Wrong")
-        print("--- %s seconds" % int(time.time() - start_time))
+    time_taken = int(time.time() - start_time)
+    output = x+y
+    return x,y,output,time_taken
 
 
-while 1:
+# while 1:
 
-    getOutput()
-app.run()
+    # getOutput()
+app.run(debug=True  )
 
 
 # testing remote git
