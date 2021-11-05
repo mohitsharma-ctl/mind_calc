@@ -10,8 +10,11 @@ def homepage():
     if request.method=='GET':
         return render_template('calculate.html.jinja',x=x,y=y)
     else:
-        print(int(request.form["x"])+int(request.form["y"])==int(request.form["result"]))
-        return render_template('calculate.html.jinja',x=x,y=y,a= request.form["x"],b=request.form["y"],c = request.form["result"])
+        if int(request.form["x"])+int(request.form["y"])==int(request.form["result"]):
+            msg = 'Correct'
+        else:
+            msg = 'Incorrect'
+        return render_template('calculate.html.jinja',x=x,y=y,msg=msg)
 def getOutput():
     start_time = time.time()
     x = randint(10,100)
