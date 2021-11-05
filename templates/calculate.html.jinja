@@ -7,9 +7,12 @@
     <title>Calculate</title>
 </head>
 <body>
-    <form>
-        {{x}}  + {{y}}
+    <form method="GET" action="main>
+
+        {{x}}  + {{y}} = 
         <input type="text" name="result">
+        <input type="hidden" name="x" value={{x}}>
+        <input type="hidden" name="y" value={{y}}>
     </form>
 </body>
 </html>
