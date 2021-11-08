@@ -1,6 +1,6 @@
 from random import randint
 import time
-from flask import Flask,render_template , request
+from flask import Flask, render_template , request
 app = Flask(__name__)
 
 @app.route('/main',methods=["GET","POST"])
@@ -8,13 +8,13 @@ def homepage():
     x = randint(10,99)
     y = randint(10,99)
     if request.method=='GET':
-        return render_template('calculate.html.jinja',x=x,y=y)
+        return render_template('main.html',x=x,y=y)
     else:
         if int(request.form["x"])+int(request.form["y"])==int(request.form["result"]):
             msg = 'Correct'
         else:
             msg = 'Incorrect'
-        return render_template('calculate.html.jinja',x=x,y=y,msg=msg)
+        return render_template('main.html',x=x,y=y,msg=msg)
 def getOutput():
     start_time = time.time()
     x = randint(10,100)
@@ -24,11 +24,8 @@ def getOutput():
     return x,y,output,time_taken
 
 
-# while 1:
+@app.route('/test')
+def test(): 
+    return render_template('footer.html')
 
-    # getOutput()
-app.run(debug=True  )
-
-
-# testing remote git
-#testing git pull command
+app.run(debug=True)

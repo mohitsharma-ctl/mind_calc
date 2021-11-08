@@ -1,0 +1,58 @@
+<!-- parent template -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<style>
+    form {
+    left      : 45%;
+    top       : 30%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    }
+    #info{
+
+    left      : 45%;
+    top       : 40%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+
+    }
+
+</style>
+<body>
+    <!-- included header in this file -->
+{% include "header.html" %}  
+
+
+
+<!-- Main content to be filled -->
+<div class="container" align="center">
+    <form method="POST" action="/main" style="justify-content: center;">
+        {{x}}  + {{y}} = 
+        <input type="text" name="result">
+        <input type="hidden" name="x" value={{x}}>
+        <input type="hidden" name="y" value={{y}}>  
+    </form>
+    {% if msg %}
+    <div id="info">
+    {{msg}}!
+    </div>
+    {% endif%}
+</div>
+
+
+<!-- footer in this file -->
+{% include "footer.html"%}
+</body>
+</html>
