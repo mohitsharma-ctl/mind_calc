@@ -24,7 +24,7 @@ def getOutput():
     return x,y,output,time_taken
 
 
-@app.route('/test')
+@app.route('/test')    #additional endpoint for testing purpose
 def test(): 
     return render_template('footer.html')
 
