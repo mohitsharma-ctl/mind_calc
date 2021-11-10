@@ -37,22 +37,32 @@
 
 
 <!-- Main content to be filled -->
+
+<audio id="myAudio">
+    <source src="{{ url_for("static", filename = "pop.mp3") }}" type="audio/ogg">
+  </audio>
 <div class="container" align="center">
-    <form method="POST" action="/main" style="justify-content: center;">
+    <form method="POST" action="/main" style="justify-content: center;" onsubmit="playAudio()">
         {{x}}  + {{y}} = 
         <input type="text" name="result" autocomplete="off">
         <input type="hidden" name="x" value={{x}}>
         <input type="hidden" name="y" value={{y}}>  
     </form>
     {% if msg %}
-    <div id="info">
+    <div id="info" class="{{ color1 }}">
     {{msg}}!
     </div>
     {% endif%}
 </div>
 
 
+
 <!-- footer in this file -->
 {% include "footer.html"%}
+
+<script>
+    var x = document.getElementById("myAudio"); 
+    x.play();     
+    </script>
 </body>
 </html>

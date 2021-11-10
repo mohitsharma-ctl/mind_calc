@@ -14,7 +14,12 @@ def homepage():
             msg = 'Correct'
         else:
             msg = 'Incorrect'
-        return render_template('main.html',x=x,y=y,msg=msg)
+
+        if msg=='Correct':
+            color1 = 'text-success'
+        else:
+            color1 = 'text-danger'
+        return render_template('main.html',x=x,y=y,msg=msg,color1=color1)
 def getOutput():
     start_time = time.time()
     x = randint(10,100)
