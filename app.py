@@ -33,4 +33,4 @@ def getOutput():
 def test(): 
     return render_template('footer.html')
 
-app.run(debug=True)
+app.run()
